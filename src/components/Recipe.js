@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import IngredientList from "./IngredientList";
 
 class Recipe extends Component{
 
@@ -6,31 +7,29 @@ class Recipe extends Component{
         super(props)
 
         this.state = {
-            isOpen: true
+            isSelected: false
         }
 
-        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(){
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
+        console.log('я кнопка')
     }
 
     render(){
         const {recipe} = this.props
-        const body = this.state.isOpen && <section>{recipe.category}</section>
+        console.log('sdsd',recipe)
+        const body = <section><IngredientList ingredients={recipe.ingredients}/></section>
         return (
             <div>
-                <h2>{recipe.name}
-                    <button onClick={this.handleClick}>
-                        {this.state.isOpen ? 'close' : 'open'}
-                    </button>
-                </h2>
+                <span>{recipe.name}</span>
+                <span>{recipe.category}</span>
+                <div>{recipe.level}</div>
                 {body}
-                <h3>{recipe.id}</h3>
+                <button onClick={this.handleClick}>Edit</button>
+                <button onClick={this.handleClick}>See more</button>
             </div>
+
         )
     }
 }

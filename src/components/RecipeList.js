@@ -19,10 +19,9 @@ class RecipeList extends Component{
 
         })
     }
+
     render(){
-        console.log('state',this.state)
         const {recipes} = this.state
-        console.log({recipes})
         const recipeElements = recipes.map(recipe=>
             <li key={recipe.id}><Recipe recipe = {recipe}/></li>
         )
