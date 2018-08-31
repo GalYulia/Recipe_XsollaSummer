@@ -4,7 +4,6 @@ import {getRecipes} from '../recipe-service'
 
 const IngredientList = props => {
     const {ingredients} = props
-    console.log('listingr',{ingredients})
     const recipeElements = ingredients.map(ingredient=>
         <li key={ingredient.id}><Ingredient ingredient = {ingredient}/></li>
     )

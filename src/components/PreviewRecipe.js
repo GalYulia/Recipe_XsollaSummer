@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import IngredientList from "./IngredientList";
 
-class Recipe extends Component{
+class PreviewRecipe extends Component{
 
     constructor(props){
         super(props)
@@ -18,7 +18,6 @@ class Recipe extends Component{
 
     render(){
         const {recipe} = this.props
-        console.log('sdsd',recipe)
         const body = <section><IngredientList ingredients={recipe.ingredients}/></section>
         return (
             <div>
@@ -34,4 +33,4 @@ class Recipe extends Component{
     }
 }
 
-export default Recipe
+export default PreviewRecipe
