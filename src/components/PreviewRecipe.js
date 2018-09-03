@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import IngredientList from "./IngredientList";
+import {Link} from "react-router-dom";
 
 class PreviewRecipe extends Component{
 
@@ -25,8 +26,7 @@ class PreviewRecipe extends Component{
                 <span>{recipe.category}</span>
                 <div>{recipe.level}</div>
                 {body}
-                <button onClick={this.handleClick}>Edit</button>
-                <button onClick={this.handleClick}>See more</button>
+                <Link to = {`/recipes/${recipe.id}`} onClick={this.handleClick} >See more</Link>
             </div>
 
         )

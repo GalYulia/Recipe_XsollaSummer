@@ -12,7 +12,11 @@ render((
         <Layout>
             <Switch>
                 <Route exact path="/" component={RecipeList}/>
-                <Route path="/recipe" component={FullRecipe}/>
+                <Route exact path="/recipe" component={FullRecipe}/>
+                <Route
+                    path="/recipes/:id"
+                    render={props => <FullRecipe text="Hello, " {...props} />}
+                />
             </Switch>
         </Layout>
     </BrowserRouter>

@@ -25,7 +25,7 @@ class RecipeList extends Component{
 
         return(
             <div>
-                <Link to="/recipe">Create recipe</Link>
+                <Link to = "/recipe">Create recipe</Link>
                 <ul>
                     {recipeElements}
                 </ul>
