@@ -9,6 +9,8 @@ class RecipeList extends Component{
         this.state = {
             recipes: []
         };
+
+
     }
 
     componentDidMount(){
@@ -17,10 +19,12 @@ class RecipeList extends Component{
         })
     }
 
+
+
     render(){
         const {recipes} = this.state
         const recipeElements = recipes.map(recipe=>
-            <li key={recipe.id}><PreviewRecipe recipe = {recipe}/></li>
+            <li key={recipe.id} ><PreviewRecipe recipe = {recipe}/></li>
         )
 
         return(

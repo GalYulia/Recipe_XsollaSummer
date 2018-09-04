@@ -19,7 +19,6 @@ const request = ({path = '', params = {}, init = {}})=> {
 }
 
 export const getRecipeById = (id) => {
-
     return request({path: 'data/' + id});
 }
 
@@ -27,4 +26,8 @@ export const getRecipes = () => {
     return request({
         path: 'data/'
     });
+};
+
+export const getIngredientsDetails = (id) => {
+    return request({path: 'ingredients/' + id});
 };

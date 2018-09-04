@@ -41,14 +41,11 @@ class FullRecipe extends Component{
     }
 
     render() {
-        const {recipe} = this.state
-        console.log('hui',{recipe})
-
-        let myComponent;
+        let ingredientList;
         if(!this.state.recipe.ingredients)
-            myComponent = null
+            ingredientList = null
         else
-            myComponent = <IngredientInfo ingredients={this.state.recipe.ingredients}/>
+            ingredientList = <IngredientInfo ingredients={this.state.recipe.ingredients}/>
 
 
         return(
@@ -77,7 +74,7 @@ class FullRecipe extends Component{
                 />
             </div>
 
-            {myComponent}
+            {ingredientList}
             <button onClick={this.handleSubmit}>Submit</button>
         </div>
     );
