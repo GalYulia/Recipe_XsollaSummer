@@ -15,7 +15,7 @@ render((
                 <Route exact path="/recipe" component={FullRecipe}/>
                 <Route
                     path="/recipes/:id"
-                    render={props => <FullRecipe text="Hello, " {...props} />}
+                    render={props => <FullRecipe {...props} />}
                 />
             </Switch>
         </Layout>

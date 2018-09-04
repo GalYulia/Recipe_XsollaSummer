@@ -1,23 +1,87 @@
-import React from "react";
+import React, {Component} from "react";
+import {getRecipeById, getRecipes} from '../recipe-service'
+import IngredientInfo from "./IngredientInfo";
+import PreviewRecipe from "./PreviewRecipe";
 
-const FullRecipe = (props)=>{
+class FullRecipe extends Component{
 
-/*console.log(props)
-    return(
-        <div>
-            <h1>Рецептик в детальках ID: {props.params.id}</h1>
-        </div>
-    )*/
-
-        const { text, match: { params } } = props;
-
-        const { id } = params;
-
-        return (
-            <div>
-                <h1>Рецептик в детальках ID: {id}</h1>
-            </div>
-        );
+    constructor(props){
+        super(props);
+        this.state = {
+            recipe: {}
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    componentDidMount(){
+        const id  = this.props.match.params.id;
+
+        getRecipeById(id).then(item => {
+            this.setState({recipe: item /*, value: item.name*/})
+        })
+
+        console.log('popytrf',this.state.recipe)
+
+    }
+
+    handleChange(event) {
+
+        let inputValue = event.target.value;
+        this.setState(prevState => ({
+            recipe: {
+                ...prevState.recipe,
+                name: inputValue
+            }
+        }))
+    }
+
+    handleSubmit(event) {
+        //alert('Text field value is: ' + this.state.value);
+    }
+
+    render() {
+        const {recipe} = this.state
+        console.log('hui',{recipe})
+
+        let myComponent;
+        if(!this.state.recipe.ingredients)
+            myComponent = null
+        else
+            myComponent = <IngredientInfo ingredients={this.state.recipe.ingredients}/>
+
+
+        return(
+        <div>
+            <div>
+                <label>Название рецепта:</label>
+                    <input type="text"
+                           value = {this.state.recipe.name}
+                           onChange={this.handleChange}
+                    />
+            </div>
+
+            <div>
+                <label>Категория:</label>
+                <input type="text"
+                       value={this.state.recipe.category}
+                       onChange={this.handleChange}
+                />
+            </div>
+
+            <div>
+                <label>Уровень сложности:</label>
+                <input type="text"
+                       value={this.state.recipe.level}
+                       onChange={this.handleChange}
+                />
+            </div>
+
+            {myComponent}
+            <button onClick={this.handleSubmit}>Submit</button>
+        </div>
+    );
+    }
+}
 
 export default FullRecipe

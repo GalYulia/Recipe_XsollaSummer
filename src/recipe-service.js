@@ -11,13 +11,16 @@ const getUrl =({path = '', params = {}}) => {
 }
 
 const request = ({path = '', params = {}, init = {}})=> {
+    console.log('path url',getUrl({path: path, params: params}))
+
     return fetch(getUrl({path: path, params: params}), init)
         .then(response => response.json());
     // promise.then навешивает обработчики на успешный результат или ошибку
 }
 
 export const getRecipeById = (id) => {
-    return request({path: '/' + id});
+
+    return request({path: 'data/' + id});
 }
 
 export const getRecipes = () => {
