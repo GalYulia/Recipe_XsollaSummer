@@ -9,8 +9,6 @@ class RecipeList extends Component{
         this.state = {
             recipes: []
         };
-
-
     }
 
     componentDidMount(){
@@ -18,8 +16,6 @@ class RecipeList extends Component{
             this.setState({recipes: item})
         })
     }
-
-
 
     render(){
         const {recipes} = this.state

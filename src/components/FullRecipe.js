@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-import {getRecipeById, getRecipes} from '../recipe-service'
+import {getRecipeById} from '../recipe-service'
 import IngredientInfo from "./IngredientInfo";
-import PreviewRecipe from "./PreviewRecipe";
 
 class FullRecipe extends Component{
 
@@ -21,12 +20,10 @@ class FullRecipe extends Component{
             this.setState({recipe: item /*, value: item.name*/})
         })
 
-        console.log('popytrf',this.state.recipe)
-
+        console.log('componentDidMount - full recipe',this.state.recipe)
     }
 
     handleChange(event) {
-
         let inputValue = event.target.value;
         this.setState(prevState => ({
             recipe: {
@@ -41,12 +38,13 @@ class FullRecipe extends Component{
     }
 
     render() {
-        let ingredientList;
+        let ingredientInfo;
         if(!this.state.recipe.ingredients)
-            ingredientList = null
+            ingredientInfo = null
         else
-            ingredientList = <IngredientInfo ingredients={this.state.recipe.ingredients}/>
+            ingredientInfo = <IngredientInfo ingredients={this.state.recipe.ingredients}/>
 
+        console.log('render - full recipe',this.state.recipe)
 
         return(
         <div>
@@ -74,7 +72,7 @@ class FullRecipe extends Component{
                 />
             </div>
 
-            {ingredientList}
+            {ingredientInfo}
             <button onClick={this.handleSubmit}>Submit</button>
         </div>
     );

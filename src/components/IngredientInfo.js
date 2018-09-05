@@ -16,27 +16,25 @@ class IngredientInfo extends Component {
     }
 
     handleFilterUpdate(filterValue) {
-        this.setState({selectedId: filterValue},
+        this.setState({selectedId: filterValue}/*,
             function afterTitleChange () {
-                console.log('okeee', this.state.selectedId);
-                ;
-            });
-
-
+            }*/);
     }
 
     render() {
         const ingredients = this.props.ingredients
-     /*   let myData;
+        let selId;
+
         if (this.state.selectedId == -1)
-            myData = getIngredientsDetails(this.props.ingredients[0].id)
+            selId = this.props.ingredients[0].id
         else
-            myData = getIngredientsDetails(this.props.selectedId)
+            selId = this.state.selectedId
 
-        console.log('qwqwe',myData)*/
         return (
-            <IngredientList ingredients={ingredients} updateFilter={this.handleFilterUpdate}/>
-
+            <span>
+                <IngredientList ingredients={ingredients} updateFilter={this.handleFilterUpdate}/>
+                <IngredientDetails selId={selId}/>
+            </span>
         );
     }
 }

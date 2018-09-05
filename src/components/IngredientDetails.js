@@ -1,17 +1,44 @@
 import React, {Component} from 'react'
+import {getIngredientsDetails, getRecipeById} from "../recipe-service";
 
-const IngredientDetails = props => {
+class IngredientDetails extends Component {
 
-    const {ingredient} = props
-    return(
-        <div>
-            <div>Калорийность: {ingredient.cal}</div>
-            <div>Белки: {ingredient.protein}</div>
-            <div>Жиры: {ingredient.fat}</div>
-            <div>Углеводы: {ingredient.carbon}</div>
-        </div>
+    constructor(props) {
+        super(props)
+        this.state = {
+            details: {}
+        };
+    }
 
-);
+    componentDidMount(){
+        this.getIngredientDetails();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.selId !== prevProps.selId)
+            this.getIngredientDetails();
+
+    }
+
+    getIngredientDetails() {
+        const id = this.props.selId;
+        getIngredientsDetails(id).then(item => {
+            this.setState({details: item /*, value: item.name*/})
+        })
+    }
+
+    render() {
+       // this.getIngredientDetails();
+        return (
+            <span>
+                <div>Калорийность: {this.state.details.cal}</div>
+                <div>Белки: {this.state.details.protein}</div>
+                <div>Жиры: {this.state.details.fat}</div>
+                <div>Углеводы: {this.state.details.carbon}</div>
+            </span>
+
+        );
+    }
 }
 
 
