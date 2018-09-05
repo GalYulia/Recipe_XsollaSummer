@@ -9,7 +9,7 @@ class IngredientList extends Component {
     }
 
     onItemClickHandler = param => event =>{
-        this.props.updateFilter(param);
+        this.props.updateDetails(param);
     }
 
     render(){

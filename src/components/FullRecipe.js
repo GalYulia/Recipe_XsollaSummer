@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {getRecipeById} from '../recipe-service'
+import {getRecipeById, updateRecipe} from '../recipe-service'
 import IngredientInfo from "./IngredientInfo";
 
 class FullRecipe extends Component{
@@ -9,7 +9,10 @@ class FullRecipe extends Component{
         this.state = {
             recipe: {}
         };
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChangeName = this.handleChangeName.bind(this);
+        this.handleChangeCategory = this.handleChangeCategory.bind(this);
+        this.handleChangeLevel = this.handleChangeLevel.bind(this);
+
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -19,11 +22,9 @@ class FullRecipe extends Component{
         getRecipeById(id).then(item => {
             this.setState({recipe: item /*, value: item.name*/})
         })
-
-        console.log('componentDidMount - full recipe',this.state.recipe)
     }
 
-    handleChange(event) {
+     handleChangeName(event) {
         let inputValue = event.target.value;
         this.setState(prevState => ({
             recipe: {
@@ -33,8 +34,29 @@ class FullRecipe extends Component{
         }))
     }
 
+    handleChangeCategory(event) {
+        let inputValue = event.target.value;
+        this.setState(prevState => ({
+            recipe: {
+                ...prevState.recipe,
+                category: inputValue
+            }
+        }))
+    }
+
+    handleChangeLevel(event) {
+        let inputValue = event.target.value;
+        this.setState(prevState => ({
+            recipe: {
+                ...prevState.recipe,
+                level: inputValue
+            }
+        }))
+    }
+
     handleSubmit(event) {
-        //alert('Text field value is: ' + this.state.value);
+       console.log('itog', this.state.recipe)
+        updateRecipe(this.state.recipe)
     }
 
     render() {
@@ -44,15 +66,13 @@ class FullRecipe extends Component{
         else
             ingredientInfo = <IngredientInfo ingredients={this.state.recipe.ingredients}/>
 
-        console.log('render - full recipe',this.state.recipe)
-
         return(
         <div>
             <div>
                 <label>Название рецепта:</label>
                     <input type="text"
                            value = {this.state.recipe.name}
-                           onChange={this.handleChange}
+                           onChange={this.handleChangeName}
                     />
             </div>
 
@@ -60,7 +80,7 @@ class FullRecipe extends Component{
                 <label>Категория:</label>
                 <input type="text"
                        value={this.state.recipe.category}
-                       onChange={this.handleChange}
+                       onChange={this.handleChangeCategory}
                 />
             </div>
 
@@ -68,7 +88,7 @@ class FullRecipe extends Component{
                 <label>Уровень сложности:</label>
                 <input type="text"
                        value={this.state.recipe.level}
-                       onChange={this.handleChange}
+                       onChange={this.handleChangeLevel}
                 />
             </div>
 

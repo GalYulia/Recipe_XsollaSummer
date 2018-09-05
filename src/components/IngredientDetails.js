@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {getIngredientsDetails, getRecipeById} from "../recipe-service";
+import {getIngredientsDetails} from "../recipe-service";
 
 class IngredientDetails extends Component {
 

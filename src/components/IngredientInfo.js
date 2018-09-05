@@ -11,11 +11,11 @@ class IngredientInfo extends Component {
         this.state = {
             selectedId: -1
         }
-        this.handleFilterUpdate = this.handleFilterUpdate.bind(this);
+        this.handleDetailsUpdate = this.handleDetailsUpdate.bind(this);
 
     }
 
-    handleFilterUpdate(filterValue) {
+    handleDetailsUpdate(filterValue) {
         this.setState({selectedId: filterValue}/*,
             function afterTitleChange () {
             }*/);
@@ -32,7 +32,7 @@ class IngredientInfo extends Component {
 
         return (
             <span>
-                <IngredientList ingredients={ingredients} updateFilter={this.handleFilterUpdate}/>
+                <IngredientList ingredients={ingredients} updateDetails={this.handleDetailsUpdate}/>
                 <IngredientDetails selId={selId}/>
             </span>
         );
