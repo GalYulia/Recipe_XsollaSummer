@@ -15,7 +15,7 @@ class IngredientList extends Component {
     render(){
     const {ingredients} = this.props
 
-    const recipeElements = ingredients.map(ingredient=>
+    const ingredientElements = ingredients.map(ingredient=>
         <li key={ingredient.id} onClick={this.onItemClickHandler(ingredient.id)}>
             <Ingredient ingredient = {ingredient}/>
         </li>
@@ -24,7 +24,7 @@ class IngredientList extends Component {
     return(
         <span>
             <ul>
-            {recipeElements}
+            {ingredientElements}
             </ul>
         </span>
     );

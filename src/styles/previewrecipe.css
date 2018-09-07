@@ -1,0 +1,35 @@
+@import "colors.css";
+
+.block{
+    display: block;
+    float: left;
+    font-family: "Calibri Light";
+    width: 100%;
+}
+
+.card{
+    composes:block;
+    background-color: var(--card);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 10px 10px 0px;
+}
+
+.level{
+    color: black;
+    margin-right: 5px;
+    text-align: left;
+}
+
+.name {
+    composes: level;
+    font-weight: bold;
+}
+
+.category{
+    color: slategrey;
+    text-align: right;
+    align-content: right;
+    float:right
+}
+

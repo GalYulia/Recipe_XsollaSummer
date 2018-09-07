@@ -6,7 +6,7 @@ import FullRecipe from "./components/FullRecipe";
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-
+import './index.css';
 render((
     <BrowserRouter>
         <Layout>

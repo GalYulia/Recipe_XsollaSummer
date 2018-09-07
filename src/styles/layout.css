@@ -1,0 +1,15 @@
+@import "../styles/colors.css";
+
+
+.header{
+    composes: block from "./previewrecipe.css";
+    text-align: center;
+    border-bottom: 10px #cfdcdb;
+}
+
+.footer{
+    composes: header;
+    position: absolute;
+    bottom: 0;
+    height: 58px;
+}

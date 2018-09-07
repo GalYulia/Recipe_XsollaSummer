@@ -1,12 +1,12 @@
 import React from "react";
-import RecipeList from './RecipeList'
 
+import styles  from '../styles/layout.css';
 const Layout = (props) => {
     return(
         <div>
-            <header>Рецептульки</header>
+            <header className={ styles.header }><h1>Рецептульки</h1></header>
             <main>{props.children}</main>
-            <footer>Xsolla Summer School 2018</footer>
+            <footer className={ styles.footer }>Xsolla Summer School 2018</footer>
         </div>
     )
 }

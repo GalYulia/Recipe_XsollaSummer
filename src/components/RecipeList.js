@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import PreviewRecipe from './PreviewRecipe'
 import {getRecipes} from '../recipe-service'
 import { Link } from 'react-router-dom'
+import styles from '../styles/buttons.css';
+import list from '../styles/list.css';
+
 class RecipeList extends Component{
 
     constructor(props){
@@ -24,9 +27,9 @@ class RecipeList extends Component{
         )
 
         return(
-            <div>
-                <Link to = "/recipe">Create recipe</Link>
-                <ul>
+            <div className={list.list}>
+                <Link className={ styles.button }to = "/recipe">Create recipe</Link>
+                <ul className={ list.ul }>
                     {recipeElements}
                 </ul>
             </div>
