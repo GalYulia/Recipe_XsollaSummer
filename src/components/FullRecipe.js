@@ -53,8 +53,7 @@ class FullRecipe extends Component {
     }));
   }
 
-  handleSubmit(event) {
-    console.log('itog', this.state.recipe);
+  handleSubmit() {
     updateRecipe(this.state.recipe);
   }
 
@@ -67,38 +66,26 @@ class FullRecipe extends Component {
 
     return (
       <div>
-        <div>
-          <label>Название рецепта:</label>
-          <input
-            type="text"
-            value={this.state.recipe.name}
-            onChange={this.handleChangeName}
-          />
-        </div>
+          {this.setInput("Название рецепта", this.state.recipe.name)}
+          {this.setInput("Категория", this.state.recipe.category)}
+          {this.setInput("Уровень сложности", this.state.recipe.level)}
 
-        <div>
-          <label>Категория:</label>
-          <input
-            type="text"
-            value={this.state.recipe.category}
-            onChange={this.handleChangeCategory}
-          />
-        </div>
-
-        <div>
-          <label>Уровень сложности:</label>
-          <input
-            type="text"
-            value={this.state.recipe.level}
-            onChange={this.handleChangeLevel}
-          />
-        </div>
-
-        {ingredientInfo}
-        <button onClick={this.handleSubmit}>Submit</button>
+          {ingredientInfo}
+          <button onClick={this.handleSubmit}>Submit</button>
       </div>
     );
   }
+
+    setInput(name, field) {
+        return <div>
+            <label>{name}</label>
+            <input
+                type="text"
+                value={field}
+                onChange={this.handleChangeName}
+            />
+        </div>;
+    }
 }
 
 export default FullRecipe;
