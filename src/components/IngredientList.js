@@ -31,6 +31,5 @@ class IngredientList extends Component {
 }
 }
 
-
 export default IngredientList
 
