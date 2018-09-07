@@ -8,9 +8,7 @@ class FullRecipe extends Component {
     this.state = {
       recipe: {},
     };
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeCategory = this.handleChangeCategory.bind(this);
-    this.handleChangeLevel = this.handleChangeLevel.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -23,35 +21,14 @@ class FullRecipe extends Component {
     });
   }
 
-  handleChangeName(event) {
-    const inputValue = event.target.value;
-    this.setState(prevState => ({
-      recipe: {
-        ...prevState.recipe,
-        name: inputValue,
-      },
-    }));
-  }
-
-  handleChangeCategory(event) {
-    const inputValue = event.target.value;
-    this.setState(prevState => ({
-      recipe: {
-        ...prevState.recipe,
-        category: inputValue,
-      },
-    }));
-  }
-
-  handleChangeLevel(event) {
-    const inputValue = event.target.value;
-    this.setState(prevState => ({
-      recipe: {
-        ...prevState.recipe,
-        level: inputValue,
-      },
-    }));
-  }
+    handleChange = (propertyName) => (event) => {
+        const { recipe } = this.state;
+        const newContact = {
+            ...recipe,
+            [propertyName]: event.target.value
+        };
+        this.setState({ recipe: newContact });
+    }
 
   handleSubmit() {
     updateRecipe(this.state.recipe);
@@ -66,23 +43,22 @@ class FullRecipe extends Component {
 
     return (
       <div>
-          {this.setInput("Название рецепта", this.state.recipe.name)}
-          {this.setInput("Категория", this.state.recipe.category)}
-          {this.setInput("Уровень сложности", this.state.recipe.level)}
-
+          {this.setInput("Название рецепта",this.state.recipe.name, this.handleChange('name'))}
+          {this.setInput("Категория",this.state.recipe.category, this.handleChange('category'))}
+          {this.setInput("Уровень сложности",this.state.recipe.level, this.handleChange('level'))}
           {ingredientInfo}
           <button onClick={this.handleSubmit}>Submit</button>
       </div>
     );
   }
 
-    setInput(name, field) {
+    setInput(label, value, event) {
         return <div>
-            <label>{name}</label>
+            <label>{label}</label>
             <input
                 type="text"
-                value={field}
-                onChange={this.handleChangeName}
+                value={value}
+                onChange={event}
             />
         </div>;
     }
