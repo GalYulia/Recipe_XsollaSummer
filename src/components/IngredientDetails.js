@@ -14,8 +14,7 @@ class IngredientDetails extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.selId !== prevProps.selId)
-        this.getIngredientDetails();
+    if (this.props.selId !== prevProps.selId) this.getIngredientDetails();
   }
 
   getIngredientDetails() {
@@ -28,10 +27,22 @@ class IngredientDetails extends Component {
   render() {
     return (
       <span>
-        <div>Калорийность: {this.state.details.cal}</div>
-        <div>Белки: {this.state.details.protein}</div>
-        <div>Жиры: {this.state.details.fat}</div>
-        <div>Углеводы: {this.state.details.carbon}</div>
+        <div>
+Калорийность:
+          {this.state.details.cal}
+        </div>
+        <div>
+Белки:
+          {this.state.details.protein}
+        </div>
+        <div>
+Жиры:
+          {this.state.details.fat}
+        </div>
+        <div>
+Углеводы:
+          {this.state.details.carbon}
+        </div>
       </span>
 
     );

@@ -47,6 +47,17 @@ class FullRecipe extends Component {
           {this.setInput("Категория",this.state.recipe.category, this.handleChange('category'))}
           {this.setInput("Уровень сложности",this.state.recipe.level, this.handleChange('level'))}
           {ingredientInfo}
+
+          <div>
+            <label>Шаги</label>
+            <div>
+             <textarea
+               type="text"
+               value={this.state.recipe.steps}
+               onChange={this.handleChange('steps')}
+              />
+            </div>
+          </div>;
           <button onClick={this.handleSubmit}>Submit</button>
       </div>
     );

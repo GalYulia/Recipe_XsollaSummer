@@ -12,19 +12,15 @@ class IngredientInfo extends Component {
   }
 
   handleDetailsUpdate(filterValue) {
-    this.setState({ selectedId: filterValue }, /* ,
-            function afterTitleChange () {
-            } */);
+    this.setState({ selectedId: filterValue });
   }
 
   render() {
     const ingredients = this.props.ingredients;
     let selId;
 
-    if (this.state.selectedId == -1)
-        selId = this.props.ingredients[0].id
-    else
-        selId = this.state.selectedId
+    if (this.state.selectedId === -1) selId = this.props.ingredients[0].id;
+    else selId = this.state.selectedId;
 
     return (
       <span>
