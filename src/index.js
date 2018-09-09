@@ -20,7 +20,7 @@ render((
         <Route exact path="/recipe" component={CreationRecipeForm} />
         <Route
           path="/recipes/:id"
-          render={props => <FullRecipe {...props} />}
+          render={props => <FullRecipe {...props} isNew={false} />}
         />
       </Switch>
     </Layout>

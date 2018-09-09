@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import FullRecipe from './FullRecipe/FullRecipe';
 import IngredientsAdd from './IngredientsAdd/IngredientsAdd';
+import {updateRecipe} from "../recipe-service";
 
 
 class CreationRecipeForm extends Component {
@@ -10,7 +11,6 @@ class CreationRecipeForm extends Component {
         recipe: {},
         ingredients: []
     };
-    //this.handleDetailsUpdate = this.handleDetailsUpdate.bind(this);
   }
 
  /* handleDetailsUpdate(filterValue) {
@@ -18,8 +18,6 @@ class CreationRecipeForm extends Component {
   }*/
 
   getData = (value) => {
-      console.log('я тут!')
-
       this.setState({ ingredients: value })
   }
 
@@ -28,7 +26,7 @@ class CreationRecipeForm extends Component {
     return (
       <div>
         <span>
-          <FullRecipe recipe={{}} />
+          <FullRecipe recipe={{}} isNew = {true} />
           <IngredientsAdd getData={this.getData}/>
         </span>
       </div>

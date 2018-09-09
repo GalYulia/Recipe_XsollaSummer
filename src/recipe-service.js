@@ -23,9 +23,17 @@ export const getIngredientsDetails = id => request({ path: `ingredients/${id}` }
 
 export const updateRecipe = recipe => request({
   path: `data/${recipe.id}/`,
-  params: {},
   init: {
     method: 'PUT',
+    body: JSON.stringify(recipe),
+    headers: { 'Content-Type': 'application/json' },
+  },
+});
+
+export const postRecipe = recipe => request({
+  path: 'data/',
+  init: {
+    method: 'POST',
     body: JSON.stringify(recipe),
     headers: { 'Content-Type': 'application/json' },
   },

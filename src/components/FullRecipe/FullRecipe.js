@@ -11,7 +11,7 @@ class FullRecipe extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipe: {},
+      recipe: {}
     };
     this.handleChange = this.handleChange.bind(this);
 
@@ -26,6 +26,7 @@ class FullRecipe extends Component {
                   this.setState({recipe: item});
               });
           }
+
   }
 
     handleChange = (propertyName) => (event) => {
@@ -42,9 +43,9 @@ class FullRecipe extends Component {
   }
 
     render() {
-        console.log('recipe', this.state.recipe)
-
+        const isNew =  this.props.isNew;
         let ingredientInfo;
+
     if(!this.state.recipe.ingredients)
         ingredientInfo = null
     else
@@ -71,7 +72,7 @@ class FullRecipe extends Component {
 
               <div>
                   <button onClick={this.handleSubmit}>
-                      {isEmpty(this.state.recipe) ? 'Create' : 'Submit' }
+                      { this.state.isNew ? 'Create' : 'Submit' }
                   </button>
               </div>
           </div>
