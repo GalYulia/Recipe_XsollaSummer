@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { getIngredientsDetails } from '../../recipe-service';
-import block from '../../styles/blocks.css';
 
 class IngredientDetails extends Component {
   constructor(props) {

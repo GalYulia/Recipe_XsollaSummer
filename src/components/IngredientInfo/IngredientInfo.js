@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import IngredientList from '../IngredientList/IngredientList';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
-import styles from './styles.css';
-
 
 class IngredientInfo extends Component {
   constructor(props) {

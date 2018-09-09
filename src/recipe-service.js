@@ -6,6 +6,7 @@ const getUrl = ({ path = '', params = {} }) => {
     .join('&');
   queryString = queryString ? `?${queryString}` : '';
 
+  //console.log('url', baseUrl + path + queryString)
   return baseUrl + path + queryString;
 };
 

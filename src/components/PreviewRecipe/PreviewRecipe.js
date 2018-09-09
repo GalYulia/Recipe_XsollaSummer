@@ -13,7 +13,10 @@ const PreviewRecipe = (props) => {
     <div className={styles.container}>
       <span className={styles.name}>{recipe.name}</span>
       <span className={styles.category}>{recipe.category}</span>
-      <div>Уровень сложности: {recipe.level}</div>
+      <div>
+Уровень сложности:
+        {recipe.level}
+      </div>
       {body}
       <Link className={button.button} to={`/recipes/${recipe.id}`}>See more</Link>
     </div>

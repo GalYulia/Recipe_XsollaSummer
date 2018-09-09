@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { getRecipeById, updateRecipe } from '../../recipe-service';
-import { isEmpty } from '../../service'
+import { getRecipeById, updateRecipe, postRecipe } from '../../recipe-service';
 import IngredientInfo from '../IngredientInfo/IngredientInfo';
+import IngredientsAdd from "../IngredientsAdd/IngredientsAdd";
 /*
 import styles from './styles.css'
 import '..\\..\\..\\src\\styles\\buttons.css';
@@ -11,12 +11,11 @@ class FullRecipe extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipe: {}
+      recipe: {},
+        ingredientsList: []
     };
     this.handleChange = this.handleChange.bind(this);
-
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   componentDidMount() {
@@ -26,41 +25,54 @@ class FullRecipe extends Component {
                   this.setState({recipe: item});
               });
           }
-
   }
 
-    handleChange = (propertyName) => (event) => {
-        const { recipe } = this.state;
-        const newContact = {
-            ...recipe,
-            [propertyName]: event.target.value
-        };
-        this.setState({ recipe: newContact });
+    handleChange = (propertyName) => (e) => {
+        let event  = e.target.value
+
+        this.handle(propertyName, event);
     }
 
-  handleSubmit() {
-    updateRecipe(this.state.recipe);
+    handle(propertyName, event) {
+        const {recipe} = this.state;
+        const newContact = {
+            ...recipe,
+            [propertyName]: event
+        };
+        this.setState({recipe: newContact});
+    }
+
+    handleSubmit() {
+      if (this.props.isNew)
+          postRecipe(this.state.recipe);
+      else
+          updateRecipe(this.state.recipe);
   }
+
+    getData = (value) => {
+        this.handle('ingredients', value);
+    }
 
     render() {
         const isNew =  this.props.isNew;
-        let ingredientInfo;
+        let ingredientComponent;
 
-    if(!this.state.recipe.ingredients)
-        ingredientInfo = null
-    else
-        ingredientInfo = <IngredientInfo ingredients={this.state.recipe.ingredients}/>
+        if (isNew)
+            ingredientComponent = <IngredientsAdd getData={this.getData}/>
+        else
+            ingredientComponent =  !this.state.recipe.ingredients ? null : <IngredientInfo ingredients={this.state.recipe.ingredients}/>
+
 
     return (
-      <div /*className={block.smallBlock}*/>
-          <div /*className={styles.main}*/>
-                  {this.setInput("Название рецепта",this.state.recipe.name, this.handleChange('name'))}
-                  {this.setInput("Категория",this.state.recipe.category, this.handleChange('category'))}
-                  {this.setInput("Уровень сложности",this.state.recipe.level, this.handleChange('level'))}
+      <div>
+          <div>
+              {this.setInput("Название рецепта",this.state.recipe.name, this.handleChange('name'))}
+              {this.setInput("Категория",this.state.recipe.category, this.handleChange('category'))}
+              {this.setInput("Уровень сложности",this.state.recipe.level, this.handleChange('level'))}
           </div>
-          {ingredientInfo}
+          {ingredientComponent}
 
-          <div /*className={block.block}*/>
+          <div>
               <div>
                 <label>Шаги</label>
                  <textarea
