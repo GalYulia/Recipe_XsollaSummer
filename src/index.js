@@ -8,6 +8,7 @@ import FullRecipe from './components/FullRecipe/FullRecipe';
 
 import './index.css';
 import './styles/globalStyles.css';
+import CreationRecipeForm from './components/CreationRecipeForm';
 
 
 render((
@@ -15,7 +16,8 @@ render((
     <Layout>
       <Switch>
         <Route exact path="/" component={RecipeList} />
-        <Route exact path="/recipe" component={FullRecipe} />
+        {/* <Route path="/recipe" render={props => <CreationRecipeForm {...props} location={props.location} key={props.location.key} />} /> */}
+        <Route exact path="/recipe" component={CreationRecipeForm} />
         <Route
           path="/recipes/:id"
           render={props => <FullRecipe {...props} />}

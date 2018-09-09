@@ -16,16 +16,16 @@ class FullRecipe extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+      if (!!this.props.match && !! this.props.match.params.id) {
 
-      if (!!id) {
-          getRecipeById(id).then((item) => {
-              this.setState({recipe: item /* , value: item.name */});
-          });
-      }
+              getRecipeById(this.props.match.params.id).then((item) => {
+                  this.setState({recipe: item});
+              });
+          }
   }
 
     handleChange = (propertyName) => (event) => {
@@ -42,7 +42,9 @@ class FullRecipe extends Component {
   }
 
     render() {
-    let ingredientInfo;
+        console.log('recipe', this.state.recipe)
+
+        let ingredientInfo;
     if(!this.state.recipe.ingredients)
         ingredientInfo = null
     else
