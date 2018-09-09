@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { getIngredientsDetails } from '../recipe-service';
+import { getIngredientsDetails } from '../../recipe-service';
+import block from '../../styles/blocks.css';
 
 class IngredientDetails extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class IngredientDetails extends Component {
 
   render() {
     return (
-      <span>
+      <div>
         <div>
 Калорийность:
           {this.state.details.cal}
@@ -43,7 +44,7 @@ class IngredientDetails extends Component {
 Углеводы:
           {this.state.details.carbon}
         </div>
-      </span>
+      </div>
 
     );
   }

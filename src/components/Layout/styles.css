@@ -1,8 +1,8 @@
-@import "../styles/colors.css";
+@import "../../styles/colors.css";
 
 
 .header{
-    composes: block from "./previewrecipe.css";
+    composes: block from "../../styles/blocks.css";
     text-align: center;
     border-bottom: 10px #cfdcdb;
 }

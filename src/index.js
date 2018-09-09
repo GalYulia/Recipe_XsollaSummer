@@ -1,12 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Layout from './components/Layout';
-import RecipeList from './components/RecipeList';
-import FullRecipe from './components/FullRecipe';
+import Layout from './components/Layout/Layout';
+import RecipeList from './components/RecipeList/RecipeList';
+import FullRecipe from './components/FullRecipe/FullRecipe';
 
 
 import './index.css';
+import './styles/globalStyles.css';
+
 
 render((
   <BrowserRouter>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import Ingredient from './Ingredient'
+import Ingredient from '../Ingredient/Ingredient'
+import styles from "./styles.css";
 
 class IngredientList extends Component {
 
@@ -22,11 +23,11 @@ class IngredientList extends Component {
     )
 
     return(
-        <span>
+        <div className={styles.container}>
             <ul>
             {ingredientElements}
             </ul>
-        </span>
+        </div>
     );
 }
 }

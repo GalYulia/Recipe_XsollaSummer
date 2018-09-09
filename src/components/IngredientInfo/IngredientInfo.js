@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import IngredientList from './IngredientList';
-import IngredientDetails from './IngredientDetails';
+import IngredientList from '../IngredientList/IngredientList';
+import IngredientDetails from '../IngredientDetails/IngredientDetails';
+import styles from './styles.css';
+
 
 class IngredientInfo extends Component {
   constructor(props) {
@@ -23,10 +25,12 @@ class IngredientInfo extends Component {
     else selId = this.state.selectedId;
 
     return (
-      <span>
-        <IngredientList ingredients={ingredients} updateDetails={this.handleDetailsUpdate} />
-        <IngredientDetails selId={selId} />
-      </span>
+      <div>
+        <span>
+          <IngredientList ingredients={ingredients} updateDetails={this.handleDetailsUpdate} />
+          <IngredientDetails selId={selId} />
+        </span>
+      </div>
     );
   }
 }

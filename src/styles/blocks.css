@@ -1,0 +1,7 @@
+.block{
+    display: block;
+    composes: simple from './text.css';
+    width: 100%;
+}
+
+

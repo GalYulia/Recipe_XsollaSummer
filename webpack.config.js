@@ -2,8 +2,18 @@ const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const postcssPresetEnv = require('postcss-preset-env');
 
 
+const postCssVar = {
+  loader: 'postcss-loader',
+  options: {
+    ident: 'postcss',
+    plugins: () => [
+      postcssPresetEnv(/* options */),
+    ],
+  },
+};
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -25,6 +35,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        include: '/src/components',
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -35,7 +46,13 @@ module.exports = {
               localIdentName: '[name]__[local]___[hash:base64:5]',
             },
           },
-          'postcss-loader'],
+          postCssVar,
+        ],
+      },
+      {
+        test: /\.css$/,
+        exclude: '/src/components',
+        use: [MiniCssExtractPlugin.loader, 'css-loader', postCssVar],
       },
       {
         test: /\.(png|jpe?g|svg)$/,

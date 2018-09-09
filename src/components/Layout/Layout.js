@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../styles/layout.css';
+import styles from './styles.css';
 
 const Layout = props => (
   <div>

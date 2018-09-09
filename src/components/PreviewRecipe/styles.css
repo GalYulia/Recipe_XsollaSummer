@@ -1,0 +1,19 @@
+@import "../../styles/colors.css";
+
+
+.container{
+    composes:block from "../../styles/blocks.css";
+    background-color: var(--card);
+    padding: 10px;
+    margin: 10px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.category{
+    composes: right from "../Ingredient/styles.css";
+    color: slategrey;
+}
+

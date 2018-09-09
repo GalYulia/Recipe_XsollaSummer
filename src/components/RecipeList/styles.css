@@ -1,0 +1,22 @@
+.container {
+    width: 50%;
+    display: block;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.button{
+    display: inline-block;
+    composes: simple from '../../styles/text.css';
+    text-align: center;
+    text-decoration: none;
+    background: ivory;
+    padding: .5em 2em .55em;
+    margin-top: 5px;
+}
+
+.color .button{
+    color: var(--text_button);
+    background: var(--card);
+    margin: 10px;
+}

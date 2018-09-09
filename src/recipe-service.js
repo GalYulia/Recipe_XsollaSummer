@@ -13,7 +13,6 @@ const request = ({ path = '', params = {}, init = {} }) => fetch(getUrl({ path, 
   .then(response => response.json());
 // promise.then навешивает обработчики на успешный результат или ошибку
 
-
 export const getRecipeById = id => request({ path: `data/${id}` });
 
 export const getRecipes = () => request({
