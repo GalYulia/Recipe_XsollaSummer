@@ -1,4 +1,5 @@
 .container {
     composes:container from '../../styles/globalStyles.css';
-    margin-left: 40%;
+    margin-left: 10%;
+    width: 50%;
 }

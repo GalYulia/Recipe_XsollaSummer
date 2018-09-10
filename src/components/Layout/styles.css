@@ -2,14 +2,7 @@
 
 
 .header{
-    composes: block from "../../styles/blocks.css";
+    composes: block from "../../styles/globalStyles.css";
     text-align: center;
     border-bottom: 10px #cfdcdb;
-}
-
-.footer{
-    composes: header;
-    position: absolute;
-    bottom: 0;
-    height: 58px;
 }

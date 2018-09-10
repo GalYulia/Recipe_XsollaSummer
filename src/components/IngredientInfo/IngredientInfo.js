@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import IngredientList from '../IngredientList/IngredientList';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
+import globalStyles from '../../styles/globalStyles.css';
+import styles from './styles.css';
 
 class IngredientInfo extends Component {
   constructor(props) {
@@ -24,10 +26,18 @@ class IngredientInfo extends Component {
 
     return (
       <div>
-        <span>
-          <IngredientList ingredients={ingredients} updateDetails={this.handleDetailsUpdate} />
-          <IngredientDetails selId={selId} />
-        </span>
+        <div className={globalStyles.row}>
+          <div className={globalStyles.col50}>
+            <div className={styles.container}>
+              <ul>
+                <IngredientList ingredients={ingredients} updateDetails={this.handleDetailsUpdate} />
+              </ul>
+            </div>
+          </div>
+          <div className={globalStyles.col50}>
+            <IngredientDetails selId={selId} />
+          </div>
+        </div>
       </div>
     );
   }

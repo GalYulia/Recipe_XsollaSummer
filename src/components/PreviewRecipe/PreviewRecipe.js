@@ -1,28 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import IngredientList from '../IngredientList/IngredientList';
 
 import styles from './styles.css';
-import button from '../RecipeList/styles.css';
+import globalStyles from '../../styles/globalStyles.css';
+import { deleteRecipe } from '../../recipe-service';
 
 
-const PreviewRecipe = (props) => {
-  const { recipe } = props;
-  const body = <section><IngredientList ingredients={recipe.ingredients} /></section>;
-  return (
-    <div className={styles.container}>
-      <span className={styles.name}>{recipe.name}</span>
-      <span className={styles.category}>{recipe.category}</span>
-      <div>
-Уровень сложности:
-        {recipe.level}
+class PreviewRecipe extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete(id) {
+    deleteRecipe(id);
+    this.props.updateData();
+  }
+
+
+  render() {
+    const { recipe } = this.props;
+    const body = <section><IngredientList ingredients={recipe.ingredients} /></section>;
+
+
+    return (
+      <div className={styles.container}>
+        <span className={styles.name}>{recipe.name}</span>
+        <span className={styles.category}>{recipe.category}</span>
+        <div className={globalStyles.row}>
+          <label>
+                        Уровень сложности:
+            {recipe.level}
+          </label>
+        </div>
+        {body}
+        <div className={globalStyles.row}>
+          <Link
+            className={globalStyles.button}
+            to={`/recipes/${recipe.id}`}
+          >
+Смотреть
+          </Link>
+          <button className={globalStyles.button} onClick={() => this.handleDelete(recipe.id)}>
+Удалить
+          </button>
+        </div>
       </div>
-      {body}
-      <Link className={button.button} to={`/recipes/${recipe.id}`}>See more</Link>
-    </div>
 
-  );
-};
+    );
+  }
+}
 
 
 export default PreviewRecipe;

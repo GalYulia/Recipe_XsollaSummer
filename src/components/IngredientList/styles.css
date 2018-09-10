@@ -1,4 +1,4 @@
 .container{
-    composes:block from '../../styles/blocks.css';
+    composes:block from '../../styles/globalStyles.css';
     border-bottom: 1px solid #cfdcdb;
 }

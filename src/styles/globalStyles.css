@@ -1,8 +1,88 @@
 ul{
     list-style-type: none;
-    padding: 10px;
+    padding-left: 10px
 }
 
-li{
-    margin-bottom: 5px;
+input[type=text], select, textarea {
+    font-family: "Calibri Light";
+    font-size: 18px;
+    color: black;
+    float: left;
+
+    width: 95%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+
+textarea{
+    height: 100px;
+}
+
+label {
+    display: inline-block;
+}
+
+.block{
+    display: block;
+    composes: simple from './text.css';
+    width: 100%;
+}
+
+.container {
+    composes:block;
+    margin-left: 20%;
+    margin-bottom: 10px;
+    width: 60%;
+    background-color: var(--card);
+    padding: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.col {
+    float: left;
+    margin-top: 6px;
+}
+
+.col25 {
+    composes: col;
+    width: 25%;
+}
+
+.col50 {
+    composes: col;
+    width: 50%;
+}
+
+.col75 {
+    composes: col;
+    width: 75%;
+}
+
+
+.row:after {
+    margin: auto;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.button{
+    display: inline-block;
+    composes: simple from './text.css';
+    text-align: center;
+    text-decoration: none;
+    margin-top: 5px;
+    margin-right: 5px;
+    color: #494949 !important;
+    background: #ffffff;
+    padding: 10px;
+    border: 4px solid #494949 !important;
+}
+
+.button:hover{
+    color: #ffffff !important;
+    background: #f6b93b;
+    border-color: #f6b93b !important;
+    transition: all 0.4s ease 0s;
 }

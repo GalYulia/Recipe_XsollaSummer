@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { getIngredientsDetails } from '../../recipe-service';
+import styles from './styles.css';
+import globalStyles from '../../styles/globalStyles.css';
 
 class IngredientDetails extends Component {
   constructor(props) {
@@ -26,25 +28,52 @@ class IngredientDetails extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-Калорийность:
-          {this.state.details.cal}
+      <div className={styles.container}>
+          <h3>Выбранный ингредиент</h3>
+        <div className={globalStyles.col50}>
+          <label>
+                  Калорийность:
+          </label>
         </div>
-        <div>
-Белки:
-          {this.state.details.protein}
+        <div className={globalStyles.col50}>
+          <label>
+            {this.state.details.cal}
+          </label>
         </div>
-        <div>
-Жиры:
-          {this.state.details.fat}
+
+        <div className={globalStyles.col50}>
+          <label>
+                  Белки:
+          </label>
         </div>
-        <div>
-Углеводы:
-          {this.state.details.carbon}
+        <div className={globalStyles.col50}>
+          <label>
+            {this.state.details.protein}
+          </label>
+        </div>
+
+        <div className={globalStyles.col50}>
+          <label>
+                  Жиры:
+          </label>
+        </div>
+        <div className={globalStyles.col50}>
+          <label>
+            {this.state.details.fat}
+          </label>
+        </div>
+
+        <div className={globalStyles.col50}>
+          <label>
+                  Углеводы:
+          </label>
+        </div>
+        <div className={globalStyles.col50}>
+          <label>
+            {this.state.details.carbon}
+          </label>
         </div>
       </div>
-
     );
   }
 }

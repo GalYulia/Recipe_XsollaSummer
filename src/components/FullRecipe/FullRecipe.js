@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { getRecipeById, updateRecipe, postRecipe } from '../../recipe-service';
 import IngredientInfo from '../IngredientInfo/IngredientInfo';
 import IngredientsAdd from "../IngredientsAdd/IngredientsAdd";
-/*
-import styles from './styles.css'
-import '..\\..\\..\\src\\styles\\buttons.css';
-import block from '../../styles/blocks.css';*/
+import styles from './styles.css';
+import globalStyles from '../../styles/globalStyles.css';
+import {Link} from "react-router-dom";
 
 class FullRecipe extends Component {
   constructor(props) {
@@ -26,6 +25,7 @@ class FullRecipe extends Component {
               });
           }
   }
+
 
     handleChange = (propertyName) => (e) => {
         let event  = e.target.value
@@ -64,42 +64,45 @@ class FullRecipe extends Component {
 
 
     return (
-      <div>
-          <div>
+        <div>
+            <div className={globalStyles.container}>
               {this.setInput("Название рецепта",this.state.recipe.name, this.handleChange('name'))}
               {this.setInput("Категория",this.state.recipe.category, this.handleChange('category'))}
               {this.setInput("Уровень сложности",this.state.recipe.level, this.handleChange('level'))}
           </div>
           {ingredientComponent}
 
-          <div>
-              <div>
-                <label>Шаги</label>
+
+            <div className={globalStyles.row}>
+                <div className={globalStyles.container}>
+                    <h3>Шаги</h3>
                  <textarea
                    type="text"
                    value={this.state.recipe.steps}
                    onChange={this.handleChange('steps')}
                   />
               </div>
+            </div>
 
-              <div>
-                  <button onClick={this.handleSubmit}>
-                      { this.state.isNew ? 'Create' : 'Submit' }
-                  </button>
-              </div>
+            <Link to="/"><button className={styles.button} onClick={this.handleSubmit}>
+                      <h3>{ isNew ? 'Создать' : 'Изменить' }</h3>
+            </button></Link>
           </div>
-      </div>
     );
   }
 
     setInput(label, value, event) {
-        return <div /*className={styles.field}*/>
-                <label>{label}</label>
+        return <div className={globalStyles.row}>
+            <div className={globalStyles.col25}>
+            <label>{label}</label>
+            </div>
+            <div className={globalStyles.col75}>
                 <input
                     type="text"
                     value={value}
                     onChange={event}
                 />
+            </div>
             </div>;
     }
 }

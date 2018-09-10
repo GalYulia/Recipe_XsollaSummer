@@ -6,13 +6,11 @@ const getUrl = ({ path = '', params = {} }) => {
     .join('&');
   queryString = queryString ? `?${queryString}` : '';
 
-  //console.log('url', baseUrl + path + queryString)
   return baseUrl + path + queryString;
 };
 
 const request = ({ path = '', params = {}, init = {} }) => fetch(getUrl({ path, params }), init)
   .then(response => response.json());
-// promise.then навешивает обработчики на успешный результат или ошибку
 
 export const getRecipeById = id => request({ path: `data/${id}` });
 
@@ -37,5 +35,12 @@ export const postRecipe = recipe => request({
     method: 'POST',
     body: JSON.stringify(recipe),
     headers: { 'Content-Type': 'application/json' },
+  },
+});
+
+export const deleteRecipe = id => request({
+  path: `data/${id}`,
+  init: {
+    method: 'DELETE',
   },
 });

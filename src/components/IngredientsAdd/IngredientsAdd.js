@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-// import styles from './styles.css';
-
+import styles from './styles.css';
+import globalStyles from '../../styles/globalStyles.css';
 class IngredientsAdd extends Component {
   constructor(props) {
     super(props);
@@ -51,18 +51,34 @@ class IngredientsAdd extends Component {
 
   render() {
       return (
-      <div>
-        <h1>Ингредиенты</h1>
-        <input value={this.state.ingredient.name} onChange={this.handleChange('name')} />
-        <input value={this.state.ingredient.quantity} onChange={this.handleChange('quantity')} />
-        <button onClick={this.handleSubmit}>Add</button>
+      <div className={globalStyles.container}>
+        <h3>Ингредиенты</h3>
+          <div className={globalStyles.row}>
+              <div className={styles.col33}>
+                <input type="text" placeholder={"Наименование..."} value={this.state.ingredient.name} onChange={this.handleChange('name')} />
+              </div>
+              <div className={styles.col33}>
+                  <input type="text" placeholder={"Количество..."} value={this.state.ingredient.quantity} onChange={this.handleChange('quantity')} />
+              </div>
+              <div className={styles.col33}>
+                  <button className={styles.button} onClick={this.handleSubmit}>Добавить</button>
+              </div>
+          </div>
         <ol>
           {this.state.list.map((item, index) => (
-            <li key={index}>
-                <span>{item.name}</span>
-                <span>{item.quantity}</span>
-              <button onClick={() => this.removeItem(index)}>Delete</button>
-            </li>))}
+              <div className={globalStyles.row} key={index}>
+                  <div className={styles.col33}>
+                <label>{item.name} </label>
+                  </div>
+
+                  <div className={styles.col33}>
+                      <label>{item.quantity}</label>
+                  </div>
+
+                  <div className={styles.col33}>
+                    <button className={styles.removeButton} onClick={() => this.removeItem(index)}>Удалить</button>
+                  </div>
+            </div>))}
         </ol>
       </div>
     );

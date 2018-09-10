@@ -17,18 +17,14 @@ class IngredientList extends Component {
     const {ingredients} = this.props
 
     const ingredientElements = ingredients.map(ingredient=>
-        <li key={ingredient.id} onClick={this.onItemClickHandler(ingredient.id)}>
+        <div key={ingredient.id} onClick={this.onItemClickHandler(ingredient.id)}>
             <Ingredient ingredient = {ingredient}/>
-        </li>
+        </div>
     )
 
-    return(
-        <div className={styles.container}>
-            <ul>
-            {ingredientElements}
+        return(<ul>{ingredientElements}
             </ul>
-        </div>
-    );
+        );
 }
 }
 

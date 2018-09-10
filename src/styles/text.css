@@ -3,15 +3,5 @@
     font-size: 18px;
     color: black;
     float: left;
-}
-
-.header1{
-    composes: simple;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.header2{
-    composes: simple;
-    font-size: 20px;
+    text-transform: uppercase;
 }
