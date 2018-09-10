@@ -24,6 +24,7 @@ class RecipeList extends Component {
 
   updateData(id) {
     deleteRecipe(id).then(response =>  getRecipes().then((item) => {
+      console.log('it',item);
         this.setState({ recipes: item });
     }));
   }

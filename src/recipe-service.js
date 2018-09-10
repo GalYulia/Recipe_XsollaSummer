@@ -6,11 +6,15 @@ const getUrl = ({ path = '', params = {} }) => {
     .join('&');
   queryString = queryString ? `?${queryString}` : '';
 
+
+  console.log('url 1', baseUrl + path + queryString )
   return baseUrl + path + queryString;
 };
 
-const request = ({ path = '', params = {}, init = {} }) => fetch(getUrl({ path, params }), init)
-  .then(response => response.json());
+const request = ({ path = '', params = {}, init = {} }) => {
+    fetch(getUrl({path, params}), init)
+        .then(response => response.json());
+}
 
 export const getRecipeById = id => request({ path: `data/${id}` });
 
