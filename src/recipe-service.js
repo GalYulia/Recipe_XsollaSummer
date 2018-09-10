@@ -1,18 +1,18 @@
-const baseUrl = 'json-server-recipes.herokuapp.com/';
+const baseUrl = 'https://json-server-recipes.herokuapp.com/';
 
-const getUrl = ({ path = '', params = {} }) => {
-  let queryString = Object.keys(params)
+const getUrl = (path) => {
+  /*let queryString = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     .join('&');
-  queryString = queryString ? `?${queryString}` : '';
+  queryString = queryString ? `?${queryString}` : '';*/
 
 
-  console.log('url 1', baseUrl + path + queryString )
-  return baseUrl + path + queryString;
+  console.log('url 1', baseUrl + path)
+  return baseUrl + path;
 };
 
-const request = ({ path = '', params = {}, init = {} }) => {
-    fetch(getUrl({path, params}), init)
+const request = ({ path = '', init = {} }) => {
+    fetch(getUrl(path), init)
         .then(response => response.json());
 }
 
