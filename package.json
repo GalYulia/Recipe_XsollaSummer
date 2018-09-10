@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "production": "rimraf dist && webpack --mode=production",
-    "dev": "webpack-dev-server --mode=development"
+    "dev": "webpack-dev-server --mode=development",
+    "start": "node server.js", // serves the application
+    "heroku-postbuild": "webpack -p" // runs after installation
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-preset-stage-2": "^6.24.1",
+    "express": "^4.16.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router": "^4.3.1",
