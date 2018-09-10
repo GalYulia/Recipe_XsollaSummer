@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PreviewRecipe from '../PreviewRecipe/PreviewRecipe';
-import { getRecipes } from '../../recipe-service';
+import { deleteRecipe, getRecipes } from '../../recipe-service';
 
 import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
@@ -11,8 +11,9 @@ class RecipeList extends Component {
     super(props);
     this.state = {
       recipes: [],
-      needUpdate: false,
     };
+
+    this.updateData = this.updateData.bind(this);
   }
 
   componentDidMount() {
@@ -21,10 +22,9 @@ class RecipeList extends Component {
     });
   }
 
-  updateData = () => {
-    console.log('1', this.state.needUpdate)
-    this.setState(() => ({
-      needUpdate: !this.state.needUpdate,
+  updateData(id) {
+    deleteRecipe(id).then(response =>  getRecipes().then((item) => {
+        this.setState({ recipes: item });
     }));
   }
 

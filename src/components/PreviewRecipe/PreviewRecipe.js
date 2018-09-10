@@ -15,8 +15,8 @@ class PreviewRecipe extends Component {
   }
 
   handleDelete(id) {
-    deleteRecipe(id);
-    this.props.updateData();
+
+    this.props.updateData(id);
   }
 
 

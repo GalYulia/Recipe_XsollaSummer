@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 
 import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
+import {random} from '../../service';
+
 class IngredientsAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
       list: [],
       ingredient: {
-        id: 0,
+        id:  random(),
         name: '',
         quantity: '',
       },
@@ -20,11 +22,10 @@ class IngredientsAdd extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.getData(this.state.list);
     this.setState(prevState => ({
       list: prevState.list.concat(this.state.ingredient),
       ingredient: {
-          id: prevState.ingredient.id + 1,
+          id: random(),
           name: '',
           quantity: '',
       }

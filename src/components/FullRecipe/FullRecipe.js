@@ -6,6 +6,8 @@ import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
 import {Link} from "react-router-dom";
 
+import { random } from '../../service';
+
 class FullRecipe extends Component {
   constructor(props) {
     super(props);
@@ -34,17 +36,25 @@ class FullRecipe extends Component {
     }
 
     handle(propertyName, event) {
+        const newContact = this.extracted(propertyName, event);
+        this.setState({recipe: newContact});
+    }
+
+    extracted(propertyName, event) {
         const {recipe} = this.state;
         const newContact = {
             ...recipe,
             [propertyName]: event
         };
-        this.setState({recipe: newContact});
+        return newContact;
     }
 
     handleSubmit() {
-      if (this.props.isNew)
-          postRecipe(this.state.recipe);
+      if (this.props.isNew) {
+          const newContact = this.extracted('id', random());
+          postRecipe(newContact);
+          //this.setState({recipe: newContact}, function () { console.log('2',this.state.recipe);postRecipe(this.state.recipe);});
+      }
       else
           updateRecipe(this.state.recipe);
   }
