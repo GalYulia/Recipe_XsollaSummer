@@ -7,7 +7,7 @@
     "production": "rimraf dist && webpack --mode=production",
     "dev": "webpack-dev-server --mode=development",
     "start": "node server.js",
-    "heroku-postbuild": "node_modules\.bin\webpack -p"
+    "heroku-postbuild": "webpack -p"
   },
   "author": "",
   "license": "ISC",
