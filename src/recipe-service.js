@@ -1,20 +1,17 @@
 const baseUrl = 'https://json-server-recipes.herokuapp.com/';
+//const baseUrl = 'http://localhost:3000/';
 
-const getUrl = (path) => {
-  /*let queryString = Object.keys(params)
+const getUrl = ({ path = '', params = {} }) => {
+  let queryString = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     .join('&');
-  queryString = queryString ? `?${queryString}` : '';*/
+  queryString = queryString ? `?${queryString}` : '';
 
-
-  console.log('url 1', baseUrl + path)
-  return baseUrl + path;
+  return baseUrl + path + queryString;
 };
 
-const request = ({ path = '', init = {} }) => {
-    fetch(getUrl(path), init)
-        .then(response => response.json());
-}
+const request = ({ path = '', params = {}, init = {} }) => fetch(getUrl({ path, params }), init)
+  .then(response => response.json());
 
 export const getRecipeById = id => request({ path: `data/${id}` });
 
