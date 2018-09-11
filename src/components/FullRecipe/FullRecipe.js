@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getRecipeById, updateRecipe, postRecipe } from '../../recipe-service';
 import IngredientInfo from '../IngredientInfo/IngredientInfo';
 import IngredientsAdd from "../IngredientsAdd/IngredientsAdd";
+
 import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
 import {Link} from "react-router-dom";
@@ -21,7 +22,6 @@ class FullRecipe extends Component {
 
   componentDidMount() {
       if (!!this.props.match && !! this.props.match.params.id) {
-
               getRecipeById(this.props.match.params.id).then((item) => {
                   this.setState({recipe: item});
               });
@@ -36,7 +36,7 @@ class FullRecipe extends Component {
     }
 
     handle(propertyName, event) {
-        const newContact = this.extracted(propertyName, event);
+        const newContact = this.postToServer(propertyName, event);
         this.setState({recipe: newContact});
     }
 
@@ -50,14 +50,20 @@ class FullRecipe extends Component {
     }
 
     handleSubmit() {
-      if (this.props.isNew) {
-          const newContact = this.extracted('id', random());
-          postRecipe(newContact);
-          //this.setState({recipe: newContact}, function () { console.log('2',this.state.recipe);postRecipe(this.state.recipe);});
-      }
-      else
-          updateRecipe(this.state.recipe);
+        if (Object.keys(this.state.recipe).length<5)
+            console.log('заполни поля')
+        else
+            this.postToServer();
   }
+
+    postToServer() {
+        if (this.props.isNew) {
+            const newContact = this.extracted('id', random());
+            postRecipe(newContact);
+        }
+        else
+            updateRecipe(this.state.recipe);
+    }
 
     getData = (value) => {
         this.handle('ingredients', value);

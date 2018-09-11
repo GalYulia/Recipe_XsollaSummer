@@ -10,9 +10,15 @@
 .name {
     font-weight: bold;
 }
+.right{
+text-align: right;
+align-content: right;
+float:right;
+margin-right: 5px;
+}
 
 .category{
-    composes: right from "../Ingredient/styles.css";
+    composes: right;
     color: slategrey;
 }
 

@@ -22,7 +22,7 @@ class PreviewRecipe extends Component {
 
   render() {
     const { recipe } = this.props;
-    const body = <section><IngredientList ingredients={recipe.ingredients} /></section>;
+    const body = <section><IngredientList ingredients={recipe.ingredients} isDetailed = {false} /></section>;
 
 
     return (

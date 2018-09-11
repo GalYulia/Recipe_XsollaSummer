@@ -1,11 +1,11 @@
 jobs:
   build:
     docker:
-    - image: circleci/node:6
+    - image: circleci/node:8
     steps:
     - checkout
     - restore_cache: # special step to restore the dependency cache
-        key: dependency-cache-{{ checksum "package.json" }}
+        key: dependency-cache-{{ checksum "package-lock.json" }}
     - run:
         name: Setup Dependencies
         command: npm install
@@ -15,7 +15,7 @@ jobs:
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
     - save_cache: # special step to save the dependency cache
-        key: dependency-cache-{{ checksum "package.json" }}
+        key: dependency-cache-{{ checksum "package-lock.json" }}
         paths:
         - ./node_modules
     - run: # run tests
@@ -24,3 +24,10 @@ jobs:
           ./cc-test-reporter before-build
           npm test -- --coverage
           ./cc-test-reporter after-build --exit-code $?
+    deploy:
+          steps:
+          - checkout
+          - run:
+              name: Deploy Master to Heroku
+              command: |
+                git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
