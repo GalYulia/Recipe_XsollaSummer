@@ -1,5 +1,6 @@
 import React from 'react';
 import globalStyles from '../../styles/globalStyles.css';
+import styles from "./styles.css";
 
 const Ingredient = (props) => {
   const { ingredient } = props;

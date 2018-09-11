@@ -36,7 +36,7 @@ class FullRecipe extends Component {
     }
 
     handle(propertyName, event) {
-        const newContact = this.postToServer(propertyName, event);
+        const newContact = this.extracted(propertyName, event);
         this.setState({recipe: newContact});
     }
 
