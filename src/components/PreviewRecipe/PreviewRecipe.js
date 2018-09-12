@@ -10,7 +10,6 @@ import { deleteRecipe } from '../../recipe-service';
 class PreviewRecipe extends Component {
   constructor(props) {
     super(props);
-
     this.handleDelete = this.handleDelete.bind(this);
   }
 
