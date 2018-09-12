@@ -6,6 +6,8 @@ import IngredientsAdd from "../IngredientsAdd/IngredientsAdd";
 import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
 import {Link} from "react-router-dom";
+import {withRouter} from 'react-router-dom';
+
 
 import { random } from '../../service';
 
@@ -50,9 +52,9 @@ class FullRecipe extends Component {
     }
 
     handleSubmit() {
-        if (Object.keys(this.state.recipe).length<5)
+      /*  if (Object.keys(this.state.recipe).length<5)
             console.log('заполни поля')
-        else
+        else*/
             this.postToServer();
   }
 
@@ -67,6 +69,11 @@ class FullRecipe extends Component {
 
     getData = (value) => {
         this.handle('ingredients', value);
+    };
+
+    submitForm (e) {
+        e.preventDefault();
+        this.props.history.push('/');
     }
 
     render() {
@@ -80,6 +87,7 @@ class FullRecipe extends Component {
 
 
     return (
+        <form onSubmit={this.submitForm.bind(this)}>
         <div>
             <div className={globalStyles.container}>
               {this.setInput("Название рецепта",this.state.recipe.name, this.handleChange('name'))}
@@ -96,14 +104,18 @@ class FullRecipe extends Component {
                    type="text"
                    value={this.state.recipe.steps}
                    onChange={this.handleChange('steps')}
+                   required
                   />
               </div>
             </div>
 
-            <Link to="/"><button className={styles.button} onClick={this.handleSubmit}>
+            {/*<Link to="/">*/}
+                <button type="submit" className={styles.button} onClick={this.handleSubmit}>
                       <h3>{ isNew ? 'Создать' : 'Изменить' }</h3>
-            </button></Link>
+            </button>
+            {/*</Link>*/}
           </div>
+        </form>
     );
   }
 
@@ -117,6 +129,7 @@ class FullRecipe extends Component {
                     type="text"
                     value={value}
                     onChange={event}
+                    required
                 />
             </div>
             </div>;

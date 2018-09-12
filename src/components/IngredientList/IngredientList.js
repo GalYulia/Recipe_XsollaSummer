@@ -10,21 +10,21 @@ class IngredientList extends Component {
     }
 
     onItemClickHandler = param => event =>{
-        //event.target.parentElement.parentElement.classList.add('selected');
         this.props.updateDetails(param.id);
     }
 
     render(){
     const {ingredients} = this.props
     const {isDetailed} = this.props
-    const ingredientElements = ingredients.map(ingredient=>
+
+    const ingredientElements = ingredients ? (ingredients.map(ingredient=>
         <div key={ingredient.id} onClick={() => isDetailed ? this.onItemClickHandler(ingredient)() : false}>
             <Ingredient ingredient = {ingredient}/>
         </div>
-    )
+    )) : null
 
-        return(<ul>{ingredientElements}
-            </ul>
+        return(<div>{ingredientElements}
+            </div>
         );
 }
 }
