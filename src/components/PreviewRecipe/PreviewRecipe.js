@@ -14,14 +14,16 @@ class PreviewRecipe extends Component {
   }
 
   handleDelete(id) {
-
     this.props.updateData(id);
   }
 
 
   render() {
     const { recipe } = this.props;
-    const body = <section><IngredientList ingredients={recipe.ingredients} isDetailed = {false} /></section>;
+    const body =
+        <section>
+            <IngredientList ingredients={recipe.ingredients} isDetailed = {false} />
+        </section>;
 
 
     return (

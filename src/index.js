@@ -15,7 +15,7 @@ render((
     <Layout>
       <Switch>
         <Route exact path="/" component={RecipeList} />
-        <Route exact path="/recipe" render={props => <FullRecipe {...props} isNew={true} />} />
+        <Route exact path="/recipe" render={props => <FullRecipe {...props} isNew />} />
         <Route
           path="/recipes/:id"
           render={props => <FullRecipe {...props} isNew={false} />}

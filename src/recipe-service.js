@@ -1,5 +1,5 @@
 const baseUrl = 'https://json-server-recipes.herokuapp.com/';
-//const baseUrl = 'http://localhost:3000/';
+// const baseUrl = 'http://localhost:3000/';
 
 const getUrl = ({ path = '', params = {} }) => {
   let queryString = Object.keys(params)

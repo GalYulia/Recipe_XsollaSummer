@@ -23,8 +23,8 @@ class RecipeList extends Component {
   }
 
   updateData(id) {
-    deleteRecipe(id).then(response =>  getRecipes().then((item) => {
-        this.setState({ recipes: item });
+    deleteRecipe(id).then(response => getRecipes().then((item) => {
+      this.setState({ recipes: item });
     }));
   }
 
