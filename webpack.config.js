@@ -34,7 +34,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        // include: '/src/components',
+        exclude: '/src/styles/styles.css',
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -48,11 +48,11 @@ module.exports = {
           postCssVar,
         ],
       },
-      /* {
+      {
         test: /\.css$/,
-        exclude: '/src/components',
+        include: '/src/styles/styles.css',
         use: [MiniCssExtractPlugin.loader, 'css-loader', postCssVar],
-      }, */
+      },
       {
         test: /\.(png|jpe?g|svg)$/,
         use: {

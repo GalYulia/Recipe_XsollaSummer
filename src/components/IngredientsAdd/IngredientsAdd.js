@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
+import '../../styles/styles.css';
+
 import {random} from '../../service';
 
 class IngredientsAdd extends Component {
@@ -50,37 +52,41 @@ class IngredientsAdd extends Component {
     });
   }
 
+    setInput(label, value, event) {
+        return <div className={styles.col33}>
+            <input type="text" placeholder={label} value={value}
+                   onChange={event}/>
+        </div>;
+    }
   render() {
       return (
       <div className={globalStyles.container}>
-        <h3>Ингредиенты</h3>
+          <h3>Ингредиенты</h3>
           <div className={globalStyles.row}>
-              <div className={styles.col33}>
-                <input type="text" placeholder={"Наименование..."} value={this.state.ingredient.name} onChange={this.handleChange('name')} />
-              </div>
-              <div className={styles.col33}>
-                  <input type="text" placeholder={"Количество..."} value={this.state.ingredient.quantity} onChange={this.handleChange('quantity')} />
-              </div>
+              {this.setInput("Наименование...",this.state.ingredient.name,this.handleChange('name'))}
+              {this.setInput("Количество...",this.state.ingredient.quantity,this.handleChange('quantity'))}
               <div className={styles.col33}>
                   <button className={styles.button} onClick={this.handleSubmit}>Добавить</button>
               </div>
           </div>
-        <ol>
-          {this.state.list.map((item, index) => (
-              <div className={globalStyles.row} key={index}>
-                  <div className={styles.col33}>
-                <label>{item.name} </label>
-                  </div>
+          <ol>
+              {this.state.list.map((item, index) => (
+                  <div className={globalStyles.row} key={index}>
+                      <div className={styles.col33}>
+                          <label>{item.name} </label>
+                      </div>
 
-                  <div className={styles.col33}>
-                      <label>{item.quantity}</label>
-                  </div>
+                      <div className={styles.col33}>
+                          <label>{item.quantity}</label>
+                      </div>
 
-                  <div className={styles.col33}>
-                    <button className={styles.removeButton} onClick={() => this.removeItem(index)}>Удалить</button>
-                  </div>
-            </div>))}
-        </ol>
+                      <div className={styles.col33}>
+                          <button className={styles.removeButton}
+                                  onClick={() => this.removeItem(index)}>Удалить
+                          </button>
+                      </div>
+                  </div>))}
+          </ol>
       </div>
     );
   }

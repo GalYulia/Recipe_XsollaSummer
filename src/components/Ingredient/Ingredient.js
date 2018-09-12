@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
+import '../../styles/styles.css';
 
 const Ingredient = (props) => {
   const selectedClass = props.isSelected ? styles.selected : styles.nonSelected;

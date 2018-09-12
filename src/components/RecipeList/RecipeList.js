@@ -5,6 +5,8 @@ import { deleteRecipe, getRecipes } from '../../recipe-service';
 
 import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
+import '../../styles/styles.css';
+
 
 class RecipeList extends Component {
   constructor(props) {

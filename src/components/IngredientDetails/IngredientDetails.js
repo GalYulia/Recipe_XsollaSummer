@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { getIngredientsDetails } from '../../recipe-service';
 import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
+import '../../styles/styles.css';
+
 
 class IngredientDetails extends Component {
   constructor(props) {
@@ -26,53 +28,28 @@ class IngredientDetails extends Component {
     });
   }
 
+  getDiv(value) {
+    return (
+      <div className={globalStyles.col50}>
+        <label>
+          {value}
+        </label>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className={styles.container}>
-          <h3>Выбранный ингредиент</h3>
-        <div className={globalStyles.col50}>
-          <label>
-                  Калорийность:
-          </label>
-        </div>
-        <div className={globalStyles.col50}>
-          <label>
-            {this.state.details.cal}
-          </label>
-        </div>
-
-        <div className={globalStyles.col50}>
-          <label>
-                  Белки:
-          </label>
-        </div>
-        <div className={globalStyles.col50}>
-          <label>
-            {this.state.details.protein}
-          </label>
-        </div>
-
-        <div className={globalStyles.col50}>
-          <label>
-                  Жиры:
-          </label>
-        </div>
-        <div className={globalStyles.col50}>
-          <label>
-            {this.state.details.fat}
-          </label>
-        </div>
-
-        <div className={globalStyles.col50}>
-          <label>
-                  Углеводы:
-          </label>
-        </div>
-        <div className={globalStyles.col50}>
-          <label>
-            {this.state.details.carbon}
-          </label>
-        </div>
+        <h3>Выбранный ингредиент</h3>
+        {this.getDiv('Калорийность:')}
+        {this.getDiv(this.state.details.cal)}
+        {this.getDiv('Белки:')}
+        {this.getDiv(this.state.details.protein)}
+        {this.getDiv('Жиры:')}
+        {this.getDiv(this.state.details.fat)}
+        {this.getDiv('Углеводы:')}
+        {this.getDiv(this.state.details.carbon)}
       </div>
     );
   }

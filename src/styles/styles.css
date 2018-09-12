@@ -1,0 +1,19 @@
+input[type=text], select, textarea {
+    font-family: "Calibri Light";
+    font-size: 18px;
+    color: black;
+    float: left;
+
+    width: 95%;
+    padding: 12px;
+    border: 1px solid var(--input);
+    resize: vertical;
+}
+
+textarea{
+    height: 100px;
+}
+
+label {
+    display: inline-block;
+}

@@ -5,6 +5,8 @@ import IngredientsAdd from "../IngredientsAdd/IngredientsAdd";
 
 import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
+import '../../styles/styles.css';
+
 import {withRouter} from 'react-router-dom';
 
 
@@ -18,6 +20,7 @@ class FullRecipe extends Component {
         ingredientsList: []
     };
     this.handleChange = this.handleChange.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
   componentDidMount() {
@@ -67,6 +70,23 @@ class FullRecipe extends Component {
             );
     }
 
+
+    setInput(label, value, event) {
+        return <div className={globalStyles.row}>
+            <div className={globalStyles.col25}>
+                <label>{label}</label>
+            </div>
+            <div className={globalStyles.col75}>
+                <input
+                    type="text"
+                    value={value}
+                    onChange={event}
+                    required
+                />
+            </div>
+        </div>;
+    }
+
     render() {
         const isNew =  this.props.isNew;
         let ingredientComponent;
@@ -77,52 +97,36 @@ class FullRecipe extends Component {
             ingredientComponent =  !this.state.recipe.ingredients ? null : <IngredientInfo ingredients={this.state.recipe.ingredients}/>
 
 
-    return (
-        <form onSubmit={this.submitForm.bind(this)}>
-        <div>
-            <div className={globalStyles.container}>
-              {this.setInput("Название рецепта",this.state.recipe.name, this.handleChange('name'))}
-              {this.setInput("Категория",this.state.recipe.category, this.handleChange('category'))}
-              {this.setInput("Уровень сложности",this.state.recipe.level, this.handleChange('level'))}
-          </div>
-          {ingredientComponent}
-
-
-            <div className={globalStyles.row}>
+        return (
+            <form onSubmit={this.submitForm}>
+            <div>
                 <div className={globalStyles.container}>
-                    <h3>Шаги</h3>
-                 <textarea
-                   type="text"
-                   value={this.state.recipe.steps}
-                   onChange={this.handleChange('steps')}
-                   required
-                  />
-              </div>
-            </div>
+                  {this.setInput("Название рецепта",this.state.recipe.name, this.handleChange('name'))}
+                  {this.setInput("Категория",this.state.recipe.category, this.handleChange('category'))}
+                  {this.setInput("Уровень сложности",this.state.recipe.level, this.handleChange('level'))}
+                </div>
+                {ingredientComponent}
+
+
+                <div className={globalStyles.row}>
+                    <div className={globalStyles.container}>
+                        <h3>Шаги</h3>
+                        <textarea
+                           type="text"
+                           value={this.state.recipe.steps}
+                           onChange={this.handleChange('steps')}
+                           required
+                          />
+                    </div>
+                </div>
 
                 <button type="submit" className={styles.button}>
-                      <h3>{ isNew ? 'Создать' : 'Изменить' }</h3>
-            </button>
-          </div>
-        </form>
-    );
-  }
-
-    setInput(label, value, event) {
-        return <div className={globalStyles.row}>
-            <div className={globalStyles.col25}>
-            <label>{label}</label>
+                    <h3>{ isNew ? 'Создать' : 'Изменить' }</h3>
+                </button>
             </div>
-            <div className={globalStyles.col75}>
-                <input
-                    type="text"
-                    value={value}
-                    onChange={event}
-                    required
-                />
-            </div>
-            </div>;
-    }
+            </form>
+        );
+      }
 }
 
 export default FullRecipe;
