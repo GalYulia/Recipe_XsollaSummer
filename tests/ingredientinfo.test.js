@@ -34,27 +34,27 @@ describe('IngredientInfo', () => {
     mountedIngredient = undefined;
   });
 
-  it('always renders a div', () => {
+  it('div render', () => {
     const divs = ingr().find('div');
     expect(divs.length).toBeGreaterThan(0);
   });
 
-  it('always renders a `IngredientList`', () => {
+  it('IngredientList render', () => {
     expect(ingr().find(IngredientList).length).toBe(1);
   });
 
-  describe('rendered `IngredientList`', () => {
+  describe(' IngredientList render', () => {
     it('IngredientList принимает 3 параметра', () => {
       const ingredients = ingr().find(IngredientList);
       expect(Object.keys(ingredients.props()).length).toBe(3);
     });
   });
 
-  it('always renders a `IngredientDetails`', () => {
+  it('IngredientDetails render', () => {
     expect(ingr().find(IngredientDetails).length).toBe(1);
   });
 
-  describe('rendered `IngredientDetails`', () => {
+  describe('IngredientDetails render', () => {
     it('IngredientDetails принимает 1 параметр', () => {
       const details = ingr().find(IngredientDetails);
       expect(Object.keys(details.props()).length).toBe(1);

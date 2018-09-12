@@ -30,12 +30,12 @@ describe('Ingredient', () => {
     mountedIngredient = undefined;
   });
 
-  it('always renders a div', () => {
+  it('div render', () => {
     const divs = ingr().find('div');
     expect(divs.length).toBeGreaterThan(0);
   });
 
-  it('always renders a label', () => {
+  it('label render', () => {
     const labels = ingr().find('label');
     expect(labels.length).toBeGreaterThan(0);
   });
