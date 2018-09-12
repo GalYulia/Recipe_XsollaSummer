@@ -1,4 +1,6 @@
+@import "../../styles/colors.css";
+
 .container{
     composes:block from '../../styles/globalStyles.css';
-    border-bottom: 1px solid #cfdcdb;
+    border-bottom: 1px solid  var(--border-buttom);
 }

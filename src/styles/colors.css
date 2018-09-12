@@ -1,3 +1,7 @@
 :root {
-    --card: #FFFFFF;
+    --card: #fff;
+    --details: #f6b93b;
+    --border: #494949;
+    --input: #ccc;
+    --border-buttom: #cfdcdb;
 }

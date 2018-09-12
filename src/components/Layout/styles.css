@@ -4,5 +4,5 @@
 .header{
     composes: block from "../../styles/globalStyles.css";
     text-align: center;
-    border-bottom: 10px #cfdcdb;
+    border-bottom: 10px var(--border-buttom);
 }

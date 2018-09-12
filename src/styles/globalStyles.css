@@ -1,3 +1,5 @@
+@import "./colors.css";
+
 ul{
     list-style-type: none;
     padding-left: 10px
@@ -11,7 +13,7 @@ input[type=text], select, textarea {
 
     width: 95%;
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input);
     resize: vertical;
 }
 
@@ -74,15 +76,15 @@ label {
     text-decoration: none;
     margin-top: 5px;
     margin-right: 5px;
-    color: #494949 !important;
-    background: #ffffff;
+    color: var(--border) !important;
+    background: var(--card);
     padding: 10px;
-    border: 4px solid #494949 !important;
+    border: 4px solid var(--border) !important;
 }
 
 .button:hover{
-    color: #ffffff !important;
-    background: #f6b93b;
-    border-color: #f6b93b !important;
+    color:  var(--card) !important;
+    background: var(--details);
+    border-color:  var(--details) !important;
     transition: all 0.4s ease 0s;
 }

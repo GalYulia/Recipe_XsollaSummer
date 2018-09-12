@@ -1,4 +1,5 @@
-@import "../../styles/colors.css";
+
+
 .container{
     composes:block from "../../styles/globalStyles.css";
     background-color: var(--card);

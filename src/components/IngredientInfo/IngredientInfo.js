@@ -29,9 +29,7 @@ class IngredientInfo extends Component {
         <div className={globalStyles.row}>
           <div className={globalStyles.col50}>
             <div className={styles.container}>
-              <ul>
                 <IngredientList ingredients={ingredients} updateDetails={this.handleDetailsUpdate} isDetailed />
-              </ul>
             </div>
           </div>
           <div className={globalStyles.col50}>

@@ -52,20 +52,13 @@ class FullRecipe extends Component {
     }
 
     handleSubmit() {
-      /*  if (Object.keys(this.state.recipe).length<5)
-            console.log('заполни поля')
-        else*/
-            this.postToServer();
-  }
-
-    postToServer() {
         if (this.props.isNew) {
             const newContact = this.extracted('id', random());
             postRecipe(newContact);
         }
         else
             updateRecipe(this.state.recipe);
-    }
+  }
 
     getData = (value) => {
         this.handle('ingredients', value);
@@ -109,11 +102,9 @@ class FullRecipe extends Component {
               </div>
             </div>
 
-            {/*<Link to="/">*/}
                 <button type="submit" className={styles.button} onClick={this.handleSubmit}>
                       <h3>{ isNew ? 'Создать' : 'Изменить' }</h3>
             </button>
-            {/*</Link>*/}
           </div>
         </form>
     );

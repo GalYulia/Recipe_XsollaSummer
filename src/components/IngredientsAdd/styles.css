@@ -4,7 +4,7 @@ input[type=text] {
     float: left;
 
     width: 75%;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input);
     resize: vertical;
 }
 
