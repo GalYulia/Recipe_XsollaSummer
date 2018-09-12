@@ -5,7 +5,6 @@ import IngredientsAdd from "../IngredientsAdd/IngredientsAdd";
 
 import styles from './styles.css';
 import globalStyles from '../../styles/globalStyles.css';
-import {Link} from "react-router-dom";
 import {withRouter} from 'react-router-dom';
 
 
@@ -19,7 +18,6 @@ class FullRecipe extends Component {
         ingredientsList: []
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -51,22 +49,22 @@ class FullRecipe extends Component {
         return newContact;
     }
 
-    handleSubmit() {
-        if (this.props.isNew) {
-            const newContact = this.extracted('id', random());
-            postRecipe(newContact);
-        }
-        else
-            updateRecipe(this.state.recipe);
-  }
-
     getData = (value) => {
         this.handle('ingredients', value);
     };
 
     submitForm (e) {
         e.preventDefault();
-        this.props.history.push('/');
+        if (this.props.isNew) {
+            const newContact = this.extracted('id', random());
+            postRecipe(newContact).then((response) =>
+                {this.props.history.push('/'); }
+            );
+        }
+        else
+            updateRecipe(this.state.recipe).then((response) =>
+                {this.props.history.push('/'); }
+            );
     }
 
     render() {
@@ -102,7 +100,7 @@ class FullRecipe extends Component {
               </div>
             </div>
 
-                <button type="submit" className={styles.button} onClick={this.handleSubmit}>
+                <button type="submit" className={styles.button}>
                       <h3>{ isNew ? 'Создать' : 'Изменить' }</h3>
             </button>
           </div>
